@@ -2,6 +2,7 @@
 import BreadCrumb from '@/_components/breadcrumbs/BreadCrumb'
 import Heading1 from '@/_components/headings/Heading1'
 import AboutSection from '@/_components/sections/AboutSection'
+import ContactSection from '@/_components/sections/ContactSection'
 import Spacer from '@/_components/spacers/Spacer'
 
 
@@ -14,14 +15,22 @@ const CrumbsData = [
 export default function page() {
     return (
         <>
-            <BreadCrumb data={CrumbsData} />
+            <main>
+                <BreadCrumb data={CrumbsData} />
 
-            <Spacer />
-            <div className="container__primary mb-12 pb-4 border-b border-gray-300">
-                <Heading1 name="About Us" />
-            </div>
-            <AboutSection />
-            <Spacer />
+                <Spacer />
+                <div className="container__primary mb-12 pb-4 border-b border-gray-300">
+                    <Heading1 name="About Us" />
+                </div>
+                <AboutSection />
+                <Spacer />
+            </main>
+
+            <main className='bg-gray-50'>
+                <Spacer />
+                <ContactSection />
+                <Spacer />
+            </main>
         </>
     )
 }

@@ -3,6 +3,7 @@
 import TitleOne from "../titles/TitleOne"
 import CardOne from "../cards/CardOne"
 import { CarData } from "@/_data/sample/CarData"
+import { NoImageData } from "@/_data/sample/NoImage"
 
 
 export default function ListSection() {
@@ -13,16 +14,18 @@ export default function ListSection() {
                     <TitleOne
                         name="Recent Imports"
                         btnName="View More"
-                        href="#"
+                        href="/buy-a-car"
                     />
 
                     <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-6">
 
-                        {CarData.slice(0, 12).map((i, key) => (
+                        {CarData.slice(0, 8).map((i, key) => (
                             <CardOne
                                 key={key}
                                 data={i}
-                                href="#" />
+                                image={i.image ?? NoImageData}
+                                href={`/buy-a-car/${i.id}`}
+                            />
                         ))}
 
                     </div>

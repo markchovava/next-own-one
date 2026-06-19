@@ -15,16 +15,18 @@ const CrumbsData = [
 export default function page() {
     return (
         <>
-            <BreadCrumb data={CrumbsData} />
+            <main className='bg-gray-50'>
+                <BreadCrumb data={CrumbsData} />
 
-            <div className="container__primary mb-8 pb-4 border-b border-gray-300">
+                <div className="container__primary mb-8 pb-4 border-b border-gray-300">
+                    <Spacer />
+                    <Heading1 name="Buy A Car" />
+                </div>
+
+                <ShopSection />
+
                 <Spacer />
-                <Heading1 name="Buy A Car" />
-            </div>
-
-            <ShopSection />
-
-            <Spacer />
+            </main>
         </>
     )
 }

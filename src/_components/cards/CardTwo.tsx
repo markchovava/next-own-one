@@ -8,6 +8,7 @@ import Link from "next/link"
 import Button from "../buttons/Button"
 import LabelOne from "../labels/LabelOne"
 import { CarInterface } from "@/_data/entity/CarEntity"
+import CardIcon from "./CardIcon"
 
 
 
@@ -36,7 +37,7 @@ export default function CardTwo({
     return (
         <div className='hover:drop-shadow-xl grid md:grid-cols-3 grid-cols-1 bg-white rounded-lg overflow-hidden drop-shadow'>
             <div className='col-span-1'>
-                <div className='group cursor-pointer w-full lg:h-70 h-80 bg-gray-200'>
+                <div className='group cursor-pointer w-full overflow-hidden lg:h-70 h-80 bg-gray-200'>
                     <ImageOne image={image} />
                 </div>
             </div>
@@ -50,26 +51,11 @@ export default function CardTwo({
                     </p>
                 </div>
                 <div className='w-full grid grid-cols-2 gap-4 border-y border-gray-200 py-3 my-3'>
-                    <div className='flex items-center justify-start gap-1'>
-                        <IconDefault type="gas-station" css='text-2xl text-gray-700' />
-                        {fuel}
-                    </div>
-                    <div className='flex items-center justify-start gap-1'>
-                        <IconDefault type="gearbox" css='text-2xl text-gray-700' />
-                        {transmission}
-                    </div>
-                    <div className='flex items-center justify-start gap-1'>
-                        <IconDefault type="engine" css='text-2xl text-gray-700' />
-                        {engineCapacity}
-                    </div>
-                    <div className='flex items-center justify-start gap-1'>
-                        <IconDefault type="dashboard" css='text-2xl text-gray-700' />
-                        {mileage}
-                    </div>
-                    <div className='flex items-center justify-start gap-1'>
-                        <IconDefault type="calendar" css='text-2xl text-gray-700' />
-                        {year}
-                    </div>
+                    <CardIcon name={fuel ?? ''} iconType='gas-station' />
+                    <CardIcon name={transmission ?? ''} iconType='gearbox' />
+                    <CardIcon name={engineCapacity ?? ''} iconType='engine' />
+                    <CardIcon name={mileage ?? ''} iconType='dashboard' />
+                    <CardIcon name={year ?? ''} iconType='calendar' />
                     <div className='flex items-center justify-start gap-1'>
                         <LabelOne name={condition} />
                     </div>

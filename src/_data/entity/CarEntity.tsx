@@ -1,4 +1,10 @@
 
+
+export interface CarPropertyInterface {
+    name: string
+    value: string | number
+}
+
 export interface CarInterface {
     id: number
     name: string
@@ -7,10 +13,12 @@ export interface CarInterface {
     condition: string
     mileage?: string
     engineCapacity: string
+    description: string
     fuel?: string
     transmission?: string
     price: string
     createdAt?: string
+    properties: CarPropertyInterface[]
 }
 
 
@@ -19,11 +27,13 @@ export const CarEntity: CarInterface = {
     name: "",
     image: '',
     year: "",
+    description: '',
     condition: "",
     mileage: "",
     engineCapacity: "",
     fuel: "",
     transmission: '',
     price: "",
-    createdAt: ''
+    createdAt: '',
+    properties: []
 }

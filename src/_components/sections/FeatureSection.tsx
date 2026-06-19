@@ -24,7 +24,7 @@ export default function FeatureSection() {
                     <TitleOne
                         name="Featured Listings"
                         btnName="View More"
-                        href="#"
+                        href="/buy-a-car"
                     />
 
                     <div className='w-full grid grid-cols-1 lg:grid-cols-5 gap-4'>
@@ -32,13 +32,10 @@ export default function FeatureSection() {
                         <div className='lg:col-span-2 col-span-1'>
                             {dataList.length > 0 && (
                                 <Card
-                                    image={NoImageData}
-                                    name={dataList[0].name}
-                                    year={dataList[0].year}
-                                    fuel={dataList[0].fuel}
-                                    transmission={dataList[0].transmission}
-                                    price={dataList[0].price}
-                                    imageCss='h-130'
+                                    image={dataList[0].image ?? NoImageData}
+                                    data={dataList[0]}
+                                    href={`/buy-a-car/${dataList[0].id}`}
+                                    imageCss='h-134'
                                 />
                             )}
                         </div>
@@ -49,13 +46,10 @@ export default function FeatureSection() {
                                     dataList.slice(1, 5).map((i, key) => (
                                         <Card
                                             key={key}
-                                            image={NoImageData}
-                                            name={i.name}
-                                            year={i.year}
-                                            fuel={i.fuel}
-                                            transmission={i.transmission}
-                                            price={i.price}
-                                            imageCss='h-50'
+                                            image={i.image ?? NoImageData}
+                                            data={dataList[key]}
+                                            href={`/buy-a-car/${dataList[key].id}`}
+                                            imageCss='h-52'
                                         />
                                     ))
                                 }

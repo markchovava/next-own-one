@@ -7,7 +7,7 @@ interface Props {
     name?: string
 }
 
-export default function ImageOne({
+export default function ImageTwo({
     image,
     name = 'Image'
 }: Props) {
@@ -15,7 +15,7 @@ export default function ImageOne({
         <>
             <img
                 src={image}
-                className={`w-full h-full object-cover 
+                className={`w-full h-full object-fill
                     group-hover:scale-110 transition-transform 
                     duration-300 ease-in-out`}
                 alt={name} />

@@ -12,6 +12,7 @@ import LabelOne from '../labels/LabelOne'
 import CardTwo from '../cards/CardTwo'
 import { useEffect } from 'react'
 import { CarData } from '@/_data/sample/CarData'
+import { NoImageData } from '@/_data/sample/NoImage'
 
 
 
@@ -64,8 +65,13 @@ function MainSection() {
             </div>
 
             <section className='w-full pt-4 space-y-6'>
-                {carsList.map((i, key) => (
-                    <CardTwo data={i} key={key} href="#" />
+                {carsList.slice(0, 12).map((i, key) => (
+                    <CardTwo
+                        key={key}
+                        data={i}
+                        image={i.image ?? NoImageData}
+                        href={`/buy-a-car/${i.id}`}
+                    />
                 ))}
 
             </section>

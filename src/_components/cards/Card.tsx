@@ -1,34 +1,27 @@
 "use client"
 
 import { NoImageData } from "@/_data/sample/NoImage"
-import IconDefault from "../icons/IconDefault"
 import { ComfortaaBold } from "@/_assets/fonts/comfortaa/ComfortaaFont"
 import Link from "next/link"
+import { CarInterface } from "@/_data/entity/CarEntity"
+import CardIcon from "./CardIcon"
+
 
 
 interface Props {
-    image?: string
-    name: string
-    year: string
-    fuel?: string
-    href?: string
-    transmission?: string
-    price: string
-    imageCss?: string
+    image: string
+    data: CarInterface
+    href: string
+    imageCss: string
 }
-
-
 
 export default function Card({
     image = NoImageData,
-    name,
-    year,
-    fuel,
-    transmission,
-    href = '#',
-    price,
-    imageCss = 'h-90'
+    href,
+    data,
+    imageCss = 'h-100'
 }: Props) {
+    const { name, year, price, condition, fuel, engineCapacity, transmission, mileage } = data
     return (
         <>
             <div className={`cursor-pointer group w-full bg-white rounded-lg drop-shadow overflow-hidden 
@@ -36,7 +29,8 @@ export default function Card({
                 <div className={`overflow-hidden w-full ${imageCss} border-b border-gray-200 flex items-center justify-center `}>
                     <img
                         src={image}
-                        className='w-auto h-full object-fit group-hover:scale-110 transition-transform duration-300 ease-in-out'
+                        className={`${imageCss} w-full h-full object-cover 
+                            group-hover:scale-110 transition-transform duration-300 ease-in-out`}
                         alt={name} />
                 </div>
                 <div className='px-4 pt-3 pb-4 bg-slate-900 text-white'>
@@ -52,10 +46,7 @@ export default function Card({
                             <span className='px-3 pt-1 pb-0.5 bg-gray-200 text-slate-900 rounded-md text-center'>
                                 {year}
                             </span>
-                            <span className='flex lg:justify-start item-center gap-1'>
-                                <IconDefault type="gas-station" css='text-xl text-gray-100' />
-                                {fuel}
-                            </span>
+                            <CardIcon name={fuel ?? ''} iconType="gas-station" />
                         </div>
                         <div>
                             <p className={`${ComfortaaBold.className} lg:text-2xl text-lg text-end`}>
@@ -63,6 +54,8 @@ export default function Card({
                             </p>
                         </div>
                     </div>
+
+
                 </div>
             </div>
         </>
