@@ -9,11 +9,15 @@ import { AnimatePresence, motion } from "motion/react"
 interface Props {
     name: string
     css: string
+    label1?: string
+    label2?: string
 }
 
 export default function CardSelect({
     name,
-    css
+    css,
+    label1 = '',
+    label2 = ''
 }: Props) {
     const [toggle, setToggle] = useState<boolean>(true)
 
@@ -30,8 +34,8 @@ export default function CardSelect({
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 className='grid grid-cols-2 gap-3'>
-                <SelectInputOne />
-                <SelectInputOne />
+                <SelectInputOne label={label1} />
+                <SelectInputOne label={label2} />
             </motion.div>
 
         </div>

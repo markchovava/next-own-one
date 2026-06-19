@@ -1,8 +1,8 @@
 export function formatDate(dateString: string): string {
-    const options: Intl.DateTimeFormatOptions = { 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric' 
+    const options: Intl.DateTimeFormatOptions = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
     };
     const date = new Date(dateString);
     return date.toLocaleDateString('en-GB', options);
@@ -36,3 +36,10 @@ export function fullFormattedDate(date: Date): string {
 
     return `${dayOfWeek} ${dayOfMonth} ${month} ${year} ${hours}.${minutes}${ampm}`;
 }
+
+
+export const getDynamicLast20Years = (): number[] => {
+    const currentYear = new Date().getFullYear();
+    // Create an array of 20 elements and fill it with descending years
+    return Array.from({ length: 20 }, (_, index) => currentYear - index);
+};
