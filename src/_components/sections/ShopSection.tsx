@@ -8,6 +8,8 @@ import CardTwo from '../cards/CardTwo'
 import { useEffect } from 'react'
 import { CarData } from '@/_data/sample/CarData'
 import { NoImageData } from '@/_data/sample/NoImage'
+import { PriceData } from '@/_data/sample/PriceData'
+import { getDynamicLast20Years } from '@/_utils/formatDate'
 
 
 
@@ -17,9 +19,8 @@ export default function ShopSection() {
             <section className='w-full'>
                 <div className='container__primary grid lg:grid-cols-4 grid-cols-1 gap-6'>
                     <aside className='col-span-1 space-y-6'>
-                        <CardSelect name='Price' css='z-200' />
-                        <CardSelect name='Fuel' css='z-190' />
-                        <CardSelect name='Mileage' css='z-180' />
+                        <CardSelect name='Price' css='z-200' data={PriceData} />
+                        <CardSelect name='Year' css='z-190' data={getDynamicLast20Years()} />
                     </aside>
                     <main className='col-span-3'>
 

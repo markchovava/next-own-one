@@ -13,9 +13,10 @@ interface DataInterface {
 
 interface Props {
     label?: string
+    dbData: string[] | number[]
 }
 
-export default function SelectInputOne({ label = '' }: Props) {
+export default function SelectInputOne({ dbData, label = '' }: Props) {
     const [data, setData] = useState<DataInterface>({
         toggle: false,
         current: '',
@@ -57,7 +58,7 @@ export default function SelectInputOne({ label = '' }: Props) {
                             transition={{ duration: 0.2, ease: "easeInOut" }}
                             className={`cursor-pointer absolute h-50 overflow-y-auto sidebar__scroll 
                             z-50 bg-white drop-shadow w-full rounded-lg overflow-hidden mt-1`}>
-                            {data.list.map((i, key) => (
+                            {dbData.map((i, key) => (
                                 <li
                                     key={key}
                                     onClick={() => handleSelect(i)}

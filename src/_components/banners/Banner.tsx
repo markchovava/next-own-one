@@ -48,8 +48,7 @@ export default function Banner() {
                             Welcome to Own One
                         </h1>
                         <p className="text-lg text-gray-600 leading-relaxed mb-4">
-                            lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua.
+                            {AppInfoData.about.intro}
                         </p>
                         <div className='mb-5'>
                             <Link href='#' className='rounded-lg w-60 overflow-hidden'>
