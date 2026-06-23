@@ -15,6 +15,7 @@ interface Props {
 
 export default function ListSection({ dbData }: Props) {
     const { dataList, setDataList } = useCarStore()
+    console.log('dbData LIST OF CARS', dbData)
 
     useEffect(() => {
         if (dbData.data) {
