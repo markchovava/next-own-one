@@ -38,8 +38,7 @@ export function fullFormattedDate(date: Date): string {
 }
 
 
-export const getDynamicLast20Years = (): number[] => {
+export const getPastNumberedYears = (num: number): number[] => {
     const currentYear = new Date().getFullYear();
-    // Create an array of 20 elements and fill it with descending years
-    return Array.from({ length: 20 }, (_, index) => currentYear - index);
+    return Array.from({ length: num }, (_, index) => currentYear - index);
 };

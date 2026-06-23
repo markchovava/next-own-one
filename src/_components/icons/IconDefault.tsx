@@ -97,7 +97,7 @@ import { TbGasStation } from "react-icons/tb";
 import { TbManualGearbox } from "react-icons/tb";
 import { PiEngineBold } from "react-icons/pi";
 import { FaCaretRight } from "react-icons/fa";
-
+import { LuPaintbrushVertical } from "react-icons/lu";
 
 // Type names:
 // 'add', 'address', 'city', 'location', 'map', 'airline', 'airplane', 'cabin', 
@@ -125,6 +125,8 @@ export default function IconDefault({
     switch (type) {
         case 'add':
             return <IoAddCircleOutline className={css} />
+        case 'brush':
+            return <LuPaintbrushVertical className={css} />
         case 'gas-station':
             return <TbGasStation className={css} />
         case 'gearbox':

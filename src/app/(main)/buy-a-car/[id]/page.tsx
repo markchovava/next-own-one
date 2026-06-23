@@ -2,6 +2,7 @@ import BreadCrumb from "@/_components/breadcrumbs/BreadCrumb";
 import Heading1 from "@/_components/headings/Heading1";
 import CarViewSection from "@/_components/sections/CarViewSection";
 import Spacer from "@/_components/spacers/Spacer";
+import { carListAction, carViewAction } from "@/app/admin/_data/actions/CarActions";
 
 
 
@@ -19,6 +20,7 @@ interface Props {
 
 export default async function page({ params }: Props) {
     const { id } = await params;
+    const [carData] = await Promise.all([carViewAction(id)])
 
     const CrumbsData = [
         { id: 1, name: 'Home', href: '/' },
@@ -37,7 +39,7 @@ export default async function page({ params }: Props) {
                     <Heading1 name="View Car" />
                 </div>
 
-                <CarViewSection id={id} />
+                <CarViewSection dbData={carData} id={id} />
                 <Spacer />
             </main>
         </>

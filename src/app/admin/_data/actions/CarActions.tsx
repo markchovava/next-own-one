@@ -11,10 +11,9 @@ import { getAuthHeaders } from "./_helpers/getAuthHeaders";
 /*********************************
  * PUBLIC ACTIONS
  *********************************/
-
-export async function carByPriceAction(min: string | number, max: string | number) {
-    const params = `min=${min}&max=${max}`;
-    const res = await fetch(`${baseURL}car-by-price?${params}`, {
+export async function carByNumAction(num: string | number) {
+    const params = `num=${num}`;
+    const res = await fetch(`${baseURL}car-by-num?${params}`, {
         method: 'GET',
         headers: {
             'Accept': 'application/json',
@@ -22,6 +21,67 @@ export async function carByPriceAction(min: string | number, max: string | numbe
         }
     });
     return await res.json();
+}
+
+
+export async function carByPriceAction(min: string | number, max: string | number) {
+    // 1. Build URLSearchParams dynamically to drop empty/undefined keys
+    const queryParams = new URLSearchParams();
+    if (min !== undefined && min !== '') queryParams.append('min', min.toString());
+    if (max !== undefined && max !== '') queryParams.append('max', max.toString());
+    const queryString = queryParams.toString();
+    const url = `${baseURL}car-by-price${queryString ? `?${queryString}` : ''}`;
+    console.log(url);
+    try {
+        const res = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            // 2. Prevent Next.js from caching dynamic search filter results
+            cache: 'no-store'
+        });
+
+        if (!res.ok) {
+            throw new Error(`HTTP error! Status: ${res.status}`);
+        }
+
+        return await res.json();
+    } catch (error) {
+        console.error("Failed to fetch cars by price:", error);
+        return null; // Return null so your store catch block handles it cleanly
+    }
+}
+
+export async function carByYearAction(min: string | number, max: string | number) {
+    // 1. Build URLSearchParams dynamically to drop empty/undefined keys
+    const queryParams = new URLSearchParams();
+    if (min !== undefined && min !== '') queryParams.append('min', min.toString());
+    if (max !== undefined && max !== '') queryParams.append('max', max.toString());
+    const queryString = queryParams.toString();
+    const url = `${baseURL}car-by-year${queryString ? `?${queryString}` : ''}`;
+    // console.log(url);
+    try {
+        const res = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            // 2. Prevent Next.js from caching dynamic search filter results
+            cache: 'no-store'
+        });
+
+        if (!res.ok) {
+            throw new Error(`HTTP error! Status: ${res.status}`);
+        }
+
+        return await res.json();
+    } catch (error) {
+        console.error("Failed to fetch cars by price:", error);
+        return null; // Return null so your store catch block handles it cleanly
+    }
 }
 
 export async function carByBrandAction(brand: string | number) {

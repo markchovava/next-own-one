@@ -4,9 +4,25 @@ import TitleOne from "../titles/TitleOne"
 import CardOne from "../cards/CardOne"
 import { CarData } from "@/_data/sample/CarData"
 import { NoImageData } from "@/_data/sample/NoImage"
+import { useCarStore } from "@/_store/useCarStore"
+import { useEffect } from "react"
+import { baseURL } from "@/_api/baseURL"
 
 
-export default function ListSection() {
+
+interface Props {
+    dbData: any
+}
+
+export default function ListSection({ dbData }: Props) {
+    const { dataList, setDataList } = useCarStore()
+
+    useEffect(() => {
+        if (dbData.data) {
+            setDataList(dbData)
+        }
+    }, [setDataList])
+
     return (
         <>
             <section className='w-full py-28 bg-gray-50'>
@@ -19,11 +35,11 @@ export default function ListSection() {
 
                     <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-6">
 
-                        {CarData.slice(0, 8).map((i, key) => (
+                        {dataList.map((i, key) => (
                             <CardOne
                                 key={key}
                                 data={i}
-                                image={i.image ?? NoImageData}
+                                image={i.images[0]?.image ? baseURL + i.images[0]?.image : NoImageData}
                                 href={`/buy-a-car/${i.id}`}
                             />
                         ))}

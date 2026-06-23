@@ -160,7 +160,7 @@ function MainDataArea() {
                         <div key={key} className='w-full bg-white border-x border-b border-gray-300 flex items-center justify-start'>
                             <div className='w-[30%] px-4 py-3 border-r border-gray-300'>
                                 <p>{valueWithFallback(i.name)}</p>
-                                <p>Priority: {valueWithFallback(i.priority)}</p>
+                                <p className='text-xs'>Priority: {valueWithFallback(i.priority)}</p>
                             </div>
                             <div className='w-[25%] px-4 py-3 border-r border-gray-300'>
                                 {valueWithFallback(i.price)}

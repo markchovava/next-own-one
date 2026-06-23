@@ -3,6 +3,7 @@ import Heading1 from '@/_components/headings/Heading1'
 import ShopSection from '@/_components/sections/ShopSection'
 import Spacer from '@/_components/spacers/Spacer'
 import SpacerOne from '@/_components/spacers/SpacerOne'
+import { carListAction } from '@/app/admin/_data/actions/CarActions'
 
 
 
@@ -12,7 +13,8 @@ const CrumbsData = [
 ]
 
 
-export default function page() {
+export default async function page() {
+    const [carData] = await Promise.all([carListAction()])
     return (
         <>
             <main className='bg-gray-50'>
@@ -23,7 +25,7 @@ export default function page() {
                     <Heading1 name="Buy A Car" />
                 </div>
 
-                <ShopSection />
+                <ShopSection dbData={carData} />
 
                 <Spacer />
             </main>

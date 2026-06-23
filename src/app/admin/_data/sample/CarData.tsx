@@ -11,7 +11,7 @@ export const FuelData = [
 ]
 
 export const ConditionData = [
-    'Recent Import',
+    'Recent Imports',
     'Brand New',
     'Used Local'
 ]

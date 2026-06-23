@@ -47,14 +47,14 @@ export default function CardTwo({
                         {name}
                     </p>
                     <p className={`text-xl text-slate-700 ${ComfortaaBold.className}`}>
-                        {price}
+                        {price ? '$' + price : 'Not Added'}
                     </p>
                 </div>
                 <div className='w-full grid grid-cols-2 gap-4 border-y border-gray-200 py-3 my-3'>
                     <CardIcon name={fuel ?? ''} iconType='gas-station' />
                     <CardIcon name={transmission ?? ''} iconType='gearbox' />
                     <CardIcon name={engineCapacity ?? ''} iconType='engine' />
-                    <CardIcon name={mileage ?? ''} iconType='dashboard' />
+                    <CardIcon name={mileage ? mileage + 'km' : ''} iconType='dashboard' />
                     <CardIcon name={year ?? ''} iconType='calendar' />
                     <div className='flex items-center justify-start gap-1'>
                         <LabelOne name={condition} />

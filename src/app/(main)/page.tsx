@@ -5,20 +5,24 @@ import ContactSection from "@/_components/sections/ContactSection";
 import FeatureSection from "@/_components/sections/FeatureSection";
 import ListSection from "@/_components/sections/ListSection";
 import Spacer from "@/_components/spacers/Spacer";
+import { carByNumAction } from "../admin/_data/actions/CarActions";
+import { brandAllAction } from "../admin/_data/actions/BrandActions";
 
 
 
 
-export default function Home() {
+export default async function Page() {
+  const [carData, brandData] = await Promise.all([carByNumAction(12), brandAllAction()])
+
   return (
     <>
       <Banner />
 
-      <FeatureSection />
+      {/* <FeatureSection /> */}
 
-      <ListSection />
+      <ListSection dbData={carData} />
 
-      <BrandSection />
+      <BrandSection dbData={brandData} />
 
       <Spacer />
 

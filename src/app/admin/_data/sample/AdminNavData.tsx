@@ -26,6 +26,13 @@ export const AdminNavData: AdminNavInterface[] = [
         css: `bg-linear-to-br from-green-500 to-green-800 hover:bg-linear-to-br hover:from-green-500 hover:to-green-950`
     },
     {
+        id: 12,
+        iconType: 'brush',
+        name: 'Brands',
+        href: '/admin/brand',
+        css: `bg-linear-to-br from-teal-500 to-teal-800 hover:bg-linear-to-br hover:from-teal-500 hover:to-teal-950`
+    },
+    {
         id: 5,
         iconType: 'order',
         name: 'Orders',

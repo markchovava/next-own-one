@@ -11,7 +11,8 @@ import { valueWithFallback } from '@/_utils/StringManipulation'
 import LoaderPrimary from '@/app/admin/_components/loaders/LoaderPrimary'
 import { formatDate } from '@/_utils/formatDate'
 import { baseURL } from '@/_api/baseURL'
-import { NoImage } from '@/_data/sample/NoImage'
+import { NoImageData } from '@/_data/sample/NoImage'
+
 
 const title = "View Car"
 
@@ -130,7 +131,7 @@ function DataMainArea() {
                             <div key={imgObj.id} className='relative aspect-4/3 w-full overflow-hidden rounded-xl border border-gray-100 bg-gray-50 flex items-center justify-center'>
                                 {/* eslint-disable-next-line @next/next/no-img-element */}
                                 <img
-                                    src={imgObj.image ? baseURL + imgObj.image : NoImage}
+                                    src={imgObj.image ? baseURL + imgObj.image : NoImageData}
                                     alt={preData?.name || "Car asset image"}
                                     className='w-full h-full object-cover transition-transform duration-300 hover:scale-105'
                                     onError={(e) => {

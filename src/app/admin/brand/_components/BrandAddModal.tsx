@@ -1,6 +1,6 @@
 "use client"
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { AnimatePresence, motion, Variants } from 'framer-motion';
 import { useBrandStore } from '../../_data/store/useBrandStore';
 import { toast } from 'react-toastify';
@@ -45,6 +45,10 @@ export default function PartnerAddModal() {
         setIsSubmitting,
         validateForm,
     } = useBrandStore()
+
+    useEffect(() => {
+        resetData()
+    }, [resetData])
 
     const handleToggleModal = () => {
         setToggleModal(!toggleModal)
@@ -122,13 +126,15 @@ export default function PartnerAddModal() {
                                 <hr className="w-full border-b border-gray-100" />
                                 <SpacerPrimary />
 
-                                <ImageInputDefault
-                                    label='Image'
-                                    name='image'
-                                    value={data.image}
-                                    onChange={(e) => setImage(e)}
-                                    error={errors.name}
-                                />
+                                <div className='lg:w-[30%] w-[60%]'>
+                                    <ImageInputDefault
+                                        label='Image'
+                                        name='image'
+                                        value={data.image}
+                                        onChange={(e) => setImage(e)}
+                                        error={errors.name}
+                                    />
+                                </div>
                                 <SpacerPrimary />
 
                                 <TextInputDefault
@@ -145,7 +151,7 @@ export default function PartnerAddModal() {
                                 <SelectAdminDefault
                                     label='Priority'
                                     name='priority'
-                                    data={Array.from({ length: 4 }, (v, i) => i + 1)}
+                                    data={Array.from({ length: 7 }, (v, i) => i + 1)}
                                     value={data.priority}
                                     onChange={setInputValue}
                                     error={errors.priority.toString()}

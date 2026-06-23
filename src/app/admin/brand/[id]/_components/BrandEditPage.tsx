@@ -122,13 +122,16 @@ export default function BrandEditModal({ id }: PropInterface) {
                                 <hr className="w-full border-b border-gray-100" />
                                 <SpacerPrimary />
 
-                                <ImageInputDefault
-                                    label='Image'
-                                    name='image'
-                                    value={baseURL + data.image}
-                                    onChange={(e) => setImage(e)}
-                                    error={errors.name}
-                                />
+                                <div className='lg:w-[30%] w-[60%]'>
+                                    <ImageInputDefault
+                                        label='Image'
+                                        name='image'
+                                        value={baseURL + data.image}
+                                        onChange={(e) => setImage(e)}
+                                        error={errors.name}
+                                    />
+
+                                </div>
                                 <SpacerPrimary />
 
                                 <TextInputDefault
