@@ -130,7 +130,7 @@ export default function CarViewSection({ appData, dbData, id }: Props) {
                             </div>
                             <p className='text-2xl'>{appDataDb?.name}</p>
                             {appDataDb?.phone &&
-                                <Link href={`tel:${appDataDb?.phone}`} className='w-full'>
+                                <Link target='_blank' href={`tel:${appDataDb?.phone}`} className='w-full'>
                                     <motion.button
                                         whileTap={{ scale: 0.95 }}
                                         className='w-full bg-white hover:drop-shadow-md cursor-pointer transition__effect rounded-lg px-4 py-3 border border-gray-300 hover:border hover:border-gray-500'>
@@ -139,7 +139,7 @@ export default function CarViewSection({ appData, dbData, id }: Props) {
                                 </Link>
                             }
                             {appDataDb?.email &&
-                                <Link href={appDataDb?.email ? `mailto:${appDataDb?.email}` : '#'}
+                                <Link target='_blank' href={appDataDb?.email ? `mailto:${appDataDb?.email}` : '#'}
                                     className='w-full'>
                                     <motion.button
                                         whileTap={{ scale: 0.95 }}
@@ -149,7 +149,7 @@ export default function CarViewSection({ appData, dbData, id }: Props) {
                                 </Link>
                             }
                             {appDataDb?.whatsapp &&
-                                <Link href={appDataDb?.whatsapp ?? '#'} className='w-full'>
+                                <Link href={appDataDb?.whatsapp ?? '#'} className='w-full' target='_blank'>
                                     <motion.button
                                         whileTap={{ scale: 0.95 }}
                                         className='w-full text-white hover:drop-shadow-md bg-green-600 hover:bg-green-700 cursor-pointer transition__effect rounded-lg px-4 py-3 '>

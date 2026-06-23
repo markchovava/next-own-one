@@ -156,7 +156,7 @@ function MainDataArea() {
                             <div className='w-[30%] px-4 py-3 border-r border-gray-300'>{i?.email}</div>
                             <div className='w-[20%] px-4 py-3 border-r border-gray-300'>{i?.roleLevel}</div>
                             <div className='w-[10%] px-4 py-3 '>
-                                <ActionButtons viewHref={`/admin/user/${i.id}`} onDelete={() => handleDelete(i.id)} />
+                                <ActionButtons viewHref={`/admin/user/${i.id}`} onDelete={() => handleDelete(i?.id)} />
                             </div>
                         </div>
                     ))

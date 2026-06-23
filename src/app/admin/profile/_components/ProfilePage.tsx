@@ -81,13 +81,13 @@ function MainDataArea() {
 
   return (
     <section className='container__primary bg-white drop-shadow-lg rounded-lg p-6 space-y-4'>
-      <RecordDefault label='Name' value={preData.name ?? 'Not Added yet.'} />
-      <RecordDefault label='Email' value={preData.email ?? 'Not Added yet.'} />
-      <RecordDefault label='Code' value={preData.code ?? 'Not Added yet.'} />
-      <RecordDefault label='Address' value={preData.address ?? 'Not Added yet.'} />
-      <RecordDefault label='Phone Number' value={preData.phone ?? 'Not Added yet.'} />
-      <RecordDefault label='Role Level' value={preData.roleLevel ?? 'Not Added yet.'} />
-      <RecordDefault label='Admin' value={preData.isAdmin ?? 'Not Added yet.'} />
+      <RecordDefault label='Name' value={preData?.name ?? 'Not Added yet.'} />
+      <RecordDefault label='Email' value={preData?.email ?? 'Not Added yet.'} />
+      <RecordDefault label='Code' value={preData?.code ?? 'Not Added yet.'} />
+      <RecordDefault label='Address' value={preData?.address ?? 'Not Added yet.'} />
+      <RecordDefault label='Phone Number' value={preData?.phone ?? 'Not Added yet.'} />
+      <RecordDefault label='Role Level' value={preData?.roleLevel ?? 'Not Added yet.'} />
+      <RecordDefault label='Admin' value={preData?.isAdmin ?? 'Not Added yet.'} />
       <SpacerPrimary />
     </section>
   )
