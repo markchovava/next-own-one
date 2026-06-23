@@ -58,6 +58,8 @@ function DataMainArea() {
     isLoading
   } = useAppInfoStore()
 
+  console.log('preData', preData)
+
 
   if (isLoading) {
     return <LoaderPrimary />
@@ -79,7 +81,7 @@ function DataMainArea() {
       <RecordDefault label='Instagram' value={valueWithFallback(preData.instagram)} />
       <RecordDefault label='LinkedIn' value={valueWithFallback(preData.linkedin)} />
       <RecordDefault label='Tiktok' value={valueWithFallback(preData.tiktok)} />
-      <RecordDefault label='Editor' value={valueWithFallback(preData.user.email)} />
+      {/* <RecordDefault label='Editor' value={valueWithFallback(preData.user.email)} /> */}
 
       <SpacerPrimary />
     </section>
