@@ -61,7 +61,7 @@ function DataMainArea() {
   const { preData, isLoading } = useBrandStore()
 
   const updated = preData.updatedAt ? formatDate(preData.updatedAt) : 'Not Added yet.'
-  const user = preData.user.name ? preData.user.name : preData.user.email
+  const user = preData?.user?.name ? preData?.user?.name : preData?.user?.email
   const priority = preData.priority ? preData.priority.toString() : 'Not Added yet.'
 
 

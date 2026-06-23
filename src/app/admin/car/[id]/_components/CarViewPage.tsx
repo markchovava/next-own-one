@@ -72,7 +72,7 @@ function DataMainArea() {
     }
 
     // Prepare formatting fallbacks based on your Eloquent relationships
-    const authorName = preData?.user?.name ? preData.user.name : preData?.user?.email
+    const authorName = preData?.user?.name ? preData?.user?.name : preData?.user?.email
     const formattedPrice = preData?.price ? `$${Number(preData.price).toLocaleString()}` : '0'
     const formattedMileage = preData?.mileage ? `${Number(preData.mileage).toLocaleString()} km` : '0'
     const lastUpdated = preData?.updatedAt ? formatDate(preData.updatedAt) : 'Not updated yet.'
