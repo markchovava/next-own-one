@@ -169,7 +169,7 @@ function MainDataArea() {
                                 {valueWithFallback(i.condition)}
                             </div>
                             <div className='w-[20%] px-4 py-3 border-r border-gray-300'>
-                                {i.user.name ? valueWithFallback(i.user.name) : i.user.email}
+                                {i?.user?.name ? valueWithFallback(i?.user?.name) : 'Not Added Yet.'}
                             </div>
                             <div className='w-[10%] px-4 py-3 '>
                                 <ActionButtons
@@ -208,7 +208,7 @@ function MainDataArea() {
                             </div>
                             <div className=''>
                                 <p className='font-light'>User</p>
-                                <p>{i.user.name ? valueWithFallback(i.user.name) : i.user.email}</p>
+                                <p>{i?.user?.name ? valueWithFallback(i?.user?.name) : 'Not Added Yet.'}</p>
                             </div>
                             <div className=''>
                                 <p className='font-light'>Priority</p>

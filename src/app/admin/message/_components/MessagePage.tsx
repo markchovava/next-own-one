@@ -159,14 +159,14 @@ function MainDataArea() {
                     dataList.map((i, key) => (
                         <div key={key} className='w-full bg-white border-x border-b border-gray-300 flex items-center justify-start'>
                             <div className='w-[30%] px-4 py-3 border-r border-gray-300'>
-                                {valueWithFallback(i.email)}</div>
+                                {valueWithFallback(i?.email)}</div>
                             <div className='w-[30%] px-4 py-3 border-r border-gray-300'>
-                                {valueWithFallback(i.title)}</div>
+                                {valueWithFallback(i?.title)}</div>
                             <div className='w-[15%] px-4 py-3 border-r border-gray-300'>
-                                <StickerDefault label={valueWithFallback(i.status)} css='px-1.5 py-0.5' />
+                                <StickerDefault label={valueWithFallback(i?.status)} css='px-1.5 py-0.5' />
                             </div>
                             <div className='w-[15%] px-4 py-3 border-r border-gray-300'>
-                                {valueWithFallback(formatDate(i.createdAt))}
+                                {valueWithFallback(formatDate(i?.createdAt))}
                             </div>
                             <div className='w-[10%] px-4 py-3 '>
                                 <ActionButtons
@@ -188,23 +188,23 @@ function MainDataArea() {
                             <div className='w-full flex items-start justify-between'>
                                 <div className=''>
                                     <p className='font-light'>Email</p>
-                                    <p>{valueWithFallback(i.email)}</p>
+                                    <p>{valueWithFallback(i?.email)}</p>
                                 </div>
                                 <ActionButtons
                                     viewHref={`/admin/message/${i.id}`}
-                                    onDelete={() => handleDelete(i.id)} />
+                                    onDelete={() => handleDelete(i?.id)} />
                             </div>
                             <div className=''>
                                 <p className='font-light'>Title</p>
-                                <p>{valueWithFallback(i.title)}</p>
+                                <p>{valueWithFallback(i?.title)}</p>
                             </div>
                             <div className=''>
                                 <p className='font-light'>Status</p>
-                                <p><StickerDefault label={valueWithFallback(i.status)} css='px-1.5 py-0.5' /></p>
+                                <p><StickerDefault label={valueWithFallback(i?.status)} css='px-1.5 py-0.5' /></p>
                             </div>
                             <div className=''>
                                 <p className='font-light'>Created</p>
-                                <p>{valueWithFallback(formatDate(i.createdAt))}</p>
+                                <p>{valueWithFallback(formatDate(i?.createdAt))}</p>
                             </div>
                         </div>
                     ))

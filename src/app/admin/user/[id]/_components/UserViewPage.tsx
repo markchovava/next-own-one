@@ -65,7 +65,7 @@ function MainDataArea() {
   } = useUserStore()
 
 
-  const updatedAt = preData.updatedAt ? formatDate(preData.updatedAt) : ""
+  const updatedAt = preData?.updatedAt ? formatDate(preData?.updatedAt) : ""
 
 
 
@@ -77,13 +77,13 @@ function MainDataArea() {
 
   return (
     <section className='container__primary bg-white drop-shadow-lg rounded-lg p-6 space-y-4'>
-      <RecordDefault label='Name' value={valueWithFallback(preData.name)} />
-      <RecordDefault label='Email' value={valueWithFallback(preData.email)} />
-      <RecordDefault label='Phone Number' value={valueWithFallback(preData.phone)} />
-      <RecordDefault label='Address' value={valueWithFallback(preData.address)} />
-      <RecordDefault label='Admin' value={valueWithFallback(preData.isAdmin.toString())} />
-      <RecordDefault label='Code' value={valueWithFallback(preData.code)} />
-      <RecordDefault label='Role Level' value={valueWithFallback(preData.roleLevel)} />
+      <RecordDefault label='Name' value={valueWithFallback(preData?.name)} />
+      <RecordDefault label='Email' value={valueWithFallback(preData?.email)} />
+      <RecordDefault label='Phone Number' value={valueWithFallback(preData?.phone)} />
+      <RecordDefault label='Address' value={valueWithFallback(preData?.address)} />
+      <RecordDefault label='Admin' value={valueWithFallback(preData?.isAdmin.toString())} />
+      <RecordDefault label='Code' value={valueWithFallback(preData?.code)} />
+      <RecordDefault label='Role Level' value={valueWithFallback(preData?.roleLevel)} />
       <RecordDefault label='Created' value={valueWithFallback(updatedAt)} />
       <SpacerPrimary />
     </section>

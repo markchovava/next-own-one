@@ -149,21 +149,21 @@ function MainDataArea() {
                     dataList.map((i, key) => (
                         <div key={key} className='w-full bg-white border-x border-b border-gray-300 flex items-center justify-start'>
                             <div className='w-[15%] px-4 py-3 border-r border-gray-300'>
-                                {valueWithFallback(i.orderRef)}</div>
+                                {valueWithFallback(i?.orderRef)}</div>
                             <div className='w-[25%] px-4 py-3 border-r border-gray-300'>
-                                {valueWithFallback(i.customerName)}</div>
+                                {valueWithFallback(i?.customerName)}</div>
                             <div className='w-[25%] px-4 py-3 border-r border-gray-300'>
-                                {valueWithFallback(i.customerEmail)}</div>
+                                {valueWithFallback(i?.customerEmail)}</div>
                             <div className='w-[15%] px-4 py-3 border-r border-gray-300'>
-                                <StickerDefault label={valueWithFallback(i.status)} css='px-1.5 py-0.5' />
+                                <StickerDefault label={valueWithFallback(i?.status)} css='px-1.5 py-0.5' />
                             </div>
                             <div className='w-[10%] px-4 py-3 border-r border-gray-300'>
-                                {valueWithFallback(formatDate(i.createdAt))}
+                                {valueWithFallback(formatDate(i?.createdAt))}
                             </div>
                             <div className='w-[10%] px-4 py-3 '>
                                 <ActionButtons
-                                    viewHref={`/admin/order/${i.id}`}
-                                    onDelete={() => handleDelete(i.id)} />
+                                    viewHref={`/admin/order/${i?.id}`}
+                                    onDelete={() => handleDelete(i?.id)} />
                             </div>
                         </div>
                     ))

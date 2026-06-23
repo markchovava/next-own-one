@@ -87,18 +87,18 @@ function MainDataSection() {
 
     return (
         <section className='container__primary bg-white drop-shadow-lg rounded-lg p-6 space-y-4'>
-            <RecordDefault label='Order Ref' value={valueWithFallback(preData.orderRef)} />
-            <RecordDefault label='Car Name' value={valueWithFallback(preData.carName)} />
-            <RecordDefault label='Car Price' value={preData.carPrice ? `$${preData.carPrice.toLocaleString()}` : '—'} />
+            <RecordDefault label='Order Ref' value={valueWithFallback(preData?.orderRef)} />
+            <RecordDefault label='Car Name' value={valueWithFallback(preData?.carName)} />
+            <RecordDefault label='Car Price' value={preData?.carPrice ? `$${preData?.carPrice.toLocaleString()}` : '—'} />
             <hr className="border-gray-200 my-2" />
-            <RecordDefault label='Customer Name' value={valueWithFallback(preData.customerName)} />
-            <RecordDefault label='Customer Email' value={valueWithFallback(preData.customerEmail)} />
-            <RecordDefault label='Customer Phone' value={valueWithFallback(preData.customerPhone)} />
+            <RecordDefault label='Customer Name' value={valueWithFallback(preData?.customerName)} />
+            <RecordDefault label='Customer Email' value={valueWithFallback(preData?.customerEmail)} />
+            <RecordDefault label='Customer Phone' value={valueWithFallback(preData?.customerPhone)} />
             <RecordDefault
                 label='Status'
-                value={<StickerDefault label={valueWithFallback(preData.status)} css='px-1.5 py-0.5' />}
+                value={<StickerDefault label={valueWithFallback(preData?.status)} css='px-1.5 py-0.5' />}
             />
-            <RecordDefault label='Notes' value={valueWithFallback(preData.notes)} />
+            <RecordDefault label='Notes' value={valueWithFallback(preData?.notes)} />
             <RecordDefault label='Updated At' value={updated} />
             <SpacerPrimary />
         </section>

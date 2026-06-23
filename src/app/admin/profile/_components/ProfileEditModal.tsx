@@ -7,9 +7,7 @@ import ButtonAdminClose from '../../_components/buttons/ButtonAdminClose';
 import SpacerPrimary from '@/_components/spacers/SpacerPrimary';
 import HeadingSecondary from '../../_components/headings/HeadingSecondary';
 import TextInputDefault from '../../_components/forms/inputs/TextInputDefault';
-import TextAreaInputDefault from '../../_components/forms/textareas/TextAreaInputDefault';
 import { ButtonAdminSubmit } from '../../_components/buttons/ButtonAdminSubmit';
-import ImageInputDefault from '../../_components/forms/image/ImageInputDefault';
 import { useProfileStore } from '../../_data/store/useProfileStore';
 import { _profileStoreAction } from '../../_data/actions/ProfileActions';
 

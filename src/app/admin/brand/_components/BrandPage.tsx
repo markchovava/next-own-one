@@ -157,7 +157,7 @@ function MainDataArea() {
                                 <p>Priority: {valueWithFallback(i.priority)}</p>
                             </div>
                             <div className='w-[40%] px-4 py-3 border-r border-gray-300'>
-                                {i.user.name ? valueWithFallback(i.user.name) : i.user.email}
+                                {i?.user?.name ? valueWithFallback(i?.user?.name) : 'Not Added yet'}
                             </div>
                             <div className='w-[10%] px-4 py-3 '>
                                 <ActionButtons

@@ -64,7 +64,7 @@ function MainDataSection() {
     preData,
     isLoading,
   } = useMessageStore()
-  const updated = preData.updatedAt ? formatDate(preData.updatedAt) : 'Not Added yet.'
+  const updated = preData.updatedAt ? formatDate(preData?.updatedAt) : 'Not Added yet.'
 
   if (isLoading) {
     return (
@@ -74,14 +74,14 @@ function MainDataSection() {
 
   return (
     <section className='container__primary bg-white drop-shadow-lg rounded-lg p-6 space-y-4'>
-      <RecordDefault label='Title' value={valueWithFallback(preData.title)} />
-      <RecordDefault label='Email' value={valueWithFallback(preData.email)} />
+      <RecordDefault label='Title' value={valueWithFallback(preData?.title)} />
+      <RecordDefault label='Email' value={valueWithFallback(preData?.email)} />
       <RecordDefault
         label='Status'
         value={<StickerDefault
-          label={valueWithFallback(preData.status)} css='px-1.5 py-0.5' />}
+          label={valueWithFallback(preData?.status)} css='px-1.5 py-0.5' />}
       />
-      <RecordDefault label='Message' value={valueWithFallback(preData.message)} />
+      <RecordDefault label='Message' value={valueWithFallback(preData?.message)} />
       <RecordDefault label='Updated' value={updated} />
       <SpacerPrimary />
     </section>
