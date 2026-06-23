@@ -1,4 +1,3 @@
-import FooterDefault from "./_components/footers/FooterDefault";
 import HeaderDefault from "./_components/headers/HeaderDefault";
 /* ToastContainer */
 import { ToastContainer } from "react-toastify";

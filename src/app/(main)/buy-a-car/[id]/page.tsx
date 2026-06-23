@@ -1,7 +1,9 @@
 import BreadCrumb from "@/_components/breadcrumbs/BreadCrumb";
 import Heading1 from "@/_components/headings/Heading1";
+import OrderMessageModal from "@/_components/modals/OrderMessageModal";
 import CarViewSection from "@/_components/sections/CarViewSection";
 import Spacer from "@/_components/spacers/Spacer";
+import { appInfoViewAction } from "@/app/admin/_data/actions/AppInfoActions";
 import { carListAction, carViewAction } from "@/app/admin/_data/actions/CarActions";
 
 
@@ -20,7 +22,7 @@ interface Props {
 
 export default async function page({ params }: Props) {
     const { id } = await params;
-    const [carData] = await Promise.all([carViewAction(id)])
+    const [carData, appData] = await Promise.all([carViewAction(id), appInfoViewAction()])
 
     const CrumbsData = [
         { id: 1, name: 'Home', href: '/' },
@@ -39,9 +41,11 @@ export default async function page({ params }: Props) {
                     <Heading1 name="View Car" />
                 </div>
 
-                <CarViewSection dbData={carData} id={id} />
+                <CarViewSection appData={appData} dbData={carData} id={id} />
                 <Spacer />
             </main>
+
+            <OrderMessageModal />
         </>
     )
 }

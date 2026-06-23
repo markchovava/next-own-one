@@ -9,6 +9,19 @@ import { getAuthHeaders } from "./_helpers/getAuthHeaders";
 /*********************************
  * PUBLIC ACTIONS
  *********************************/
+export async function orderStoreAction(data: Record<string, any>) {
+    const res = await fetch(`${baseURL}order`, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        }
+    });
+    revalidatePath('/admin/order');
+    return await res.json();
+}
+
 export async function orderListAction() {
     const res = await fetch(`${baseURL}order`, {
         method: 'GET',

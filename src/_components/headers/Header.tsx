@@ -10,7 +10,7 @@ import HeaderResponsive from "./HeaderResponsive"
 export default function Header() {
     return (
         <>
-            <header className='lg:block hidden w-full bg-white drop-shadow-md'>
+            <header className='lg:block hidden w-full bg-white drop-shadow-md border-b border-gray-200'>
                 <section className='container__primary flex items-center justify-between py-3'>
                     <Logo />
                     <nav>

@@ -9,6 +9,19 @@ import { getAuthHeaders } from "./_helpers/getAuthHeaders";
 /*********************************
  * PUBLIC ACTIONS
  *********************************/
+export async function messageStoreAction(data: Record<string, any>) {
+  const res = await fetch(`${baseURL}message`, {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    }
+  });
+  revalidatePath('/admin/message');
+  return await res.json();
+}
+
 export async function messageListAction() {
   const res = await fetch(`${baseURL}message`, {
     method: 'GET',

@@ -7,12 +7,13 @@ import RowDual from '../tables/rows/RowDual'
 import Heading1 from '../headings/Heading1'
 import ImageOne from '../images/ImageOne'
 import Link from 'next/link'
-import { CarData } from '@/_data/sample/CarData'
 import { CarInterface } from '@/_data/entity/CarEntity'
 import { useCarStore } from '@/_store/useCarStore'
 import { baseURL } from '@/_api/baseURL'
 import { motion } from 'motion/react'
 import { formatDate } from '@/_utils/formatDate'
+import { useAppInfoStore } from '@/_store/useAppInfoStore'
+import { useOrderStore } from '@/app/admin/_data/store/useOrderStore'
 
 
 
@@ -20,19 +21,28 @@ import { formatDate } from '@/_utils/formatDate'
 interface Props {
     id: number | string
     dbData: any
+    appData: any
 }
 
-export default function CarViewSection({ dbData, id }: Props) {
+export default function CarViewSection({ appData, dbData, id }: Props) {
+    const { setToggleModal, toggleModal } = useOrderStore()
+    const {
+        data: appDataDb,
+        setData: setAppDataDb
+    } = useAppInfoStore()
     const { setData, data, setCurrentImage, currentImage, images, properties } = useCarStore()
     const numId = Number(id)
-    const i = CarData.find((i) => numId == i.id)
     //const data = i
     useEffect(() => {
+        if (appData.data) {
+            setAppDataDb(appData.data)
+        }
+
         setData(dbData.data)
         if (dbData.data.images[0] && dbData.data.images[0].image) {
             setCurrentImage(dbData.data.images[0].image)
         }
-    }, [setCurrentImage])
+    }, [setCurrentImage, dbData.data, appData.data, setAppDataDb])
 
     const handleImageClick = (i: string) => {
         setCurrentImage(i)
@@ -118,35 +128,43 @@ export default function CarViewSection({ dbData, id }: Props) {
                             <div className='group w-40 h-40 rounded-full bg-gray-200 drop-shadow overflow-hidden '>
                                 <ImageOne image={NoImageData} />
                             </div>
-                            <p className='text-2xl'>Marcus Jones</p>
-                            <Link href='#' className='w-full'>
-                                <motion.button
-                                    whileTap={{ scale: 0.95 }}
-                                    className='w-full bg-white hover:drop-shadow-md cursor-pointer transition__effect rounded-lg px-4 py-3 border border-gray-300 hover:border hover:border-gray-500'>
-                                    Call Now
-                                </motion.button>
-                            </Link>
-                            <Link href='#' className='w-full'>
-                                <motion.button
-                                    whileTap={{ scale: 0.95 }}
-                                    className='w-full text-white hover:drop-shadow-md cursor-pointer transition__effect rounded-lg px-4 py-3 bg-blue-600 hover:bg-blue-700'>
-                                    Email Now
-                                </motion.button>
-                            </Link>
-                            <Link href='#' className='w-full'>
-                                <motion.button
-                                    whileTap={{ scale: 0.95 }}
-                                    className='w-full text-white hover:drop-shadow-md bg-green-600 hover:bg-green-700 cursor-pointer transition__effect rounded-lg px-4 py-3 '>
-                                    WhatsApp Now
-                                </motion.button>
-                            </Link>
-                            <Link href='#' className='w-full'>
-                                <motion.button
-                                    whileTap={{ scale: 0.95 }}
-                                    className='w-full text-white hover:drop-shadow-md bg-amber-600 hover:bg-amber-700 cursor-pointer transition__effect rounded-lg px-4 py-3 '>
-                                    Write to us
-                                </motion.button>
-                            </Link>
+                            <p className='text-2xl'>{appDataDb?.name}</p>
+                            {appDataDb?.phone &&
+                                <Link href={`tel:${appDataDb?.phone}`} className='w-full'>
+                                    <motion.button
+                                        whileTap={{ scale: 0.95 }}
+                                        className='w-full bg-white hover:drop-shadow-md cursor-pointer transition__effect rounded-lg px-4 py-3 border border-gray-300 hover:border hover:border-gray-500'>
+                                        Call Now
+                                    </motion.button>
+                                </Link>
+                            }
+                            {appDataDb?.email &&
+                                <Link href={appDataDb?.email ? `mailto:${appDataDb?.email}` : '#'}
+                                    className='w-full'>
+                                    <motion.button
+                                        whileTap={{ scale: 0.95 }}
+                                        className='w-full text-white hover:drop-shadow-md cursor-pointer transition__effect rounded-lg px-4 py-3 bg-blue-600 hover:bg-blue-700'>
+                                        Email Now
+                                    </motion.button>
+                                </Link>
+                            }
+                            {appDataDb?.whatsapp &&
+                                <Link href={appDataDb?.whatsapp ?? '#'} className='w-full'>
+                                    <motion.button
+                                        whileTap={{ scale: 0.95 }}
+                                        className='w-full text-white hover:drop-shadow-md bg-green-600 hover:bg-green-700 cursor-pointer transition__effect rounded-lg px-4 py-3 '>
+                                        WhatsApp Now
+                                    </motion.button>
+                                </Link>
+                            }
+
+                            <motion.button
+                                whileTap={{ scale: 0.95 }}
+                                onClick={() => setToggleModal(true)}
+                                className='w-full text-white hover:drop-shadow-md bg-amber-600 hover:bg-amber-700 cursor-pointer transition__effect rounded-lg px-4 py-3 '>
+                                Write to us
+                            </motion.button>
+
                         </div>
                     </div>
                 </div>

@@ -24,7 +24,6 @@ export default function Button({
             onClick={onClick}
             type={type}
             disabled={status}
-            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.9 }}
             className={`${css} group relative flex items-center justify-center gap-1 cursor-pointer bg-linear-to-br 
           from-amber-400 to-amber-600 rounded-full overflow-hidden transition-all duration-300 hover:to-amber-700`}>

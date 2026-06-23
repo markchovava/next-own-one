@@ -3,7 +3,9 @@ import "./globals.css";
 import { ComfortaaRegular } from "@/_assets/fonts/comfortaa/ComfortaaFont";
 import Footer from "@/_components/footers/Footer";
 import Header from "@/_components/headers/Header";
-
+/* ToastContainer */
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 export const metadata: Metadata = {
@@ -27,6 +29,19 @@ export default function RootLayout({
         {children}
 
         <Footer />
+
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+        />
       </body>
     </html>
   );

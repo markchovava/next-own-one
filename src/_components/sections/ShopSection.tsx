@@ -13,6 +13,10 @@ import { useCarStore } from '@/_store/useCarStore'
 import LoaderPrimary from '@/app/admin/_components/loaders/LoaderPrimary'
 import { baseURL } from '@/_api/baseURL'
 import PlaceholderDefault from '@/app/admin/_components/placeholders/PlaceholderDefault'
+import IconDefault from '../icons/IconDefault'
+import { motion } from "motion/react"
+
+
 
 interface Props {
     dbData: any
@@ -31,34 +35,26 @@ export default function ShopSection({ dbData }: Props) {
 
     useEffect(() => {
         setDataList(dbData)
-    }, [setDataList, dbData]) // Added dbData dependency safely
+    }, [setDataList, dbData])
 
-    // Fixed handling here to use fresh values immediately instead of waiting on next render cycle
     const handlePriceUpdate = async (updatedMin: string | number, updatedMax: string | number) => {
         const currentMin = updatedMin !== '' ? updatedMin : priceRange.min;
         const currentMax = updatedMax !== '' ? updatedMax : priceRange.max;
-
         if (!currentMin && !currentMax) return;
-
         await getDataListByPrice(currentMin, currentMax)
     }
 
     const handleYearUpdate = async (updatedMin: string | number, updatedMax: string | number) => {
-        // 1. Fix: Ensure you are referencing your year state fallback, not priceRange
         const currentMin = updatedMin !== '' ? updatedMin : yearRange.min;
         const currentMax = updatedMax !== '' ? updatedMax : yearRange.max;
-
-        // 2. Fix: Remove the restrictive early return so empty inputs can clear the filter
         await getDataListByYear(currentMin, currentMax);
     }
 
 
-    console.log('yearRange:', yearRange)
-
     return (
         <section className='w-full'>
             <div className='container__primary grid lg:grid-cols-4 grid-cols-1 gap-6'>
-                <aside className='col-span-1 space-y-6'>
+                <aside className='w-full lg:col-span-1 space-y-6'>
                     <CardSelect2
                         name='Price'
                         css='z-200'
@@ -104,6 +100,7 @@ function MainSection() {
 
     return (
         <>
+            <SearchSection />
             <div className='w-full flex items-center justify-between bg-gray-100 rounded-lg p-4'>
                 <SelectInput2
                     name='orderBy'
@@ -129,4 +126,54 @@ function MainSection() {
             </section>
         </>
     )
+}
+
+
+
+function SearchSection() {
+    const {
+        search,
+        setSearch,
+        isSearching,
+        setIsSearching,
+        getDataListSearch,
+    } = useCarStore();
+
+    const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        if (!search) return;
+        try {
+            setIsSearching(true);
+            await getDataListSearch(search);
+        } catch (error) {
+            console.error("Search failed:", error);
+        } finally {
+            setIsSearching(false); // 3. Turn off loading state when done
+        }
+    };
+
+    return (
+        <form onSubmit={handleSearch} className='bg-white drop-shadow mb-4 p-4 rounded-lg'>
+            <div className='w-full flex items-center justify-start border border-gray-300 rounded-lg'>
+                <input
+                    type='text'
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    className='py-2 px-4 h-12 outline-none w-[90%] border-r border-gray-300'
+                    placeholder="Search cars..." // Added for better UX
+                />
+                <motion.button
+                    type='submit'
+                    whileTap={{ scale: 0.95 }}
+                    disabled={isSearching}
+                    className='cursor-pointer flex-1 flex items-center justify-center disabled:opacity-50'>
+                    {isSearching ? (
+                        <span>Loading...</span>
+                    ) : (
+                        <IconDefault type='search' css='text-xl' />
+                    )}
+                </motion.button>
+            </div>
+        </form>
+    );
 }

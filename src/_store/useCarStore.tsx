@@ -2,7 +2,7 @@
 
 import { baseURL } from "@/_api/baseURL"
 import { CarEntity, CarImageEntity, CarImageInterface, CarInterface, CarPropertyEntity, CarPropertyInterface } from "@/_data/entity/CarEntity"
-import { carByPriceAction, carByYearAction } from "@/app/admin/_data/actions/CarActions"
+import { carByPriceAction, carByYearAction, carSearchAction } from "@/app/admin/_data/actions/CarActions"
 import { MetaEntity, MetaInterface, MetaLinksEntity, MetaLinksInterface, ResponseInterface } from "@/app/admin/_data/entity/ResponseEntity"
 import { create } from "zustand/react"
 
@@ -19,13 +19,18 @@ interface Props {
     meta: MetaInterface
     links: MetaLinksInterface
     yearRange: { min: string | number, max: string | number }
-    setYearRange: (name: string, year: string | number) => void
     priceRange: { min: string | number, max: string | number }
+    search: string
+    isSearching: boolean
+    setSearch: (i: string) => void
+    setIsSearching: (i: boolean) => void
+    setYearRange: (name: string, year: string | number) => void
     setPriceRange: (name: string, price: string | number) => void
     sortDataList: (i: string) => void
     setCurrentImage: (i: string) => void
     setDataList: (i: ResponseInterface) => void
     setData: (i: CarInterface) => void
+    getDataListSearch: (s: string) => Promise<void>
     getDataListByPrice: (min: string | number, max: string | number) => Promise<void>
     getDataListByYear: (min: string | number, max: string | number) => Promise<void>
 }
@@ -43,6 +48,18 @@ export const useCarStore = create<Props>((set, get) => ({
     dataList: [],
     priceRange: { min: '', max: '' },
     yearRange: { min: '', max: '' },
+    search: '',
+    isSearching: false,
+    setSearch: (i) => {
+        set({
+            search: i
+        })
+    },
+    setIsSearching: (i) => {
+        set({
+            isSearching: i
+        })
+    },
     setYearRange: (name, year) => {
         const i = get().yearRange
         set({
@@ -116,6 +133,37 @@ export const useCarStore = create<Props>((set, get) => ({
             links: links || MetaLinksEntity,
             isLoading: false,
         });
+    },
+    getDataListSearch: async (s) => {
+        set({ isLoading: true });
+        try {
+            const res = await carSearchAction(s);
+            if (res && res.data && res.meta && res.links) {
+                set({
+                    dataList: res.data,
+                    meta: res.meta,
+                    links: res.links,
+                    isSearching: false,
+                    isLoading: false,
+                });
+            } else {
+                set({
+                    dataList: Array.isArray(res) ? res : res.data || [],
+                    meta: res.meta || MetaEntity,
+                    links: res.links || MetaLinksEntity,
+                    isSearching: false,
+                    isLoading: false,
+                });
+            }
+        } catch (error) {
+            console.error(`Error: ${error}`);
+            set({
+                dataList: [],
+                meta: MetaEntity,
+                links: MetaLinksEntity,
+                isLoading: false,
+            });
+        }
     },
     getDataListByPrice: async (min, max) => {
         set({ isLoading: true });

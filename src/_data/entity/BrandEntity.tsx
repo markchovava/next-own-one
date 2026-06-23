@@ -1,5 +1,5 @@
 export interface BrandInterface {
-    id: number
+    id: number | string
     name: string
     image: string
     createdAt: string
@@ -7,7 +7,7 @@ export interface BrandInterface {
 
 
 export const BrandEntity: BrandInterface = {
-    id: 0,
+    id: '',
     name: '',
     image: '',
     createdAt: ''

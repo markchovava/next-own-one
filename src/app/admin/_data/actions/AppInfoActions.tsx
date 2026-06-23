@@ -7,7 +7,7 @@ import { getAuthHeaders } from "./_helpers/getAuthHeaders";
 
 
 export async function appInfoViewAction() {
-  const res = await fetch(`${baseURL}api/app-info`, {
+  const res = await fetch(`${baseURL}app-info`, {
     method: 'GET',
     headers: {
       'Accept': 'application/json',

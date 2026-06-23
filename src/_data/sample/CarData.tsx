@@ -2,7 +2,7 @@ import { CarInterface } from "../entity/CarEntity";
 import { NoImageData } from "./NoImage";
 
 
-export const CarData: CarInterface[] = [
+/* export const CarData: CarInterface[] = [
     {
         id: 1,
         name: "BMW 3 Series",
@@ -157,4 +157,4 @@ export const CarData: CarInterface[] = [
             { name: "Drive Type", value: "FWD" }
         ]
     }
-];
+]; */

@@ -7,12 +7,17 @@ import ListSection from "@/_components/sections/ListSection";
 import Spacer from "@/_components/spacers/Spacer";
 import { carByNumAction } from "../admin/_data/actions/CarActions";
 import { brandAllAction } from "../admin/_data/actions/BrandActions";
+import { appInfoViewAction } from "../admin/_data/actions/AppInfoActions";
 
 
 
 
 export default async function Page() {
-  const [carData, brandData] = await Promise.all([carByNumAction(12), brandAllAction()])
+  const [carData, brandData, appData] = await Promise.all([
+    carByNumAction(12),
+    brandAllAction(),
+    appInfoViewAction()
+  ])
 
   return (
     <>
@@ -26,7 +31,7 @@ export default async function Page() {
 
       <Spacer />
 
-      <ContactSection />
+      <ContactSection dbData={appData} />
 
 
 

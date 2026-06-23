@@ -1,10 +1,6 @@
 "use client"
 
-import { NoImageData, } from "@/_data/sample/NoImage"
-import Card from "../cards/Card"
 import { useCarStore } from "@/_store/useCarStore"
-import { useEffect } from "react"
-import { CarData } from "@/_data/sample/CarData"
 import TitleOne from "../titles/TitleOne"
 
 
@@ -13,10 +9,10 @@ import TitleOne from "../titles/TitleOne"
 export default function FeatureSection() {
     const { dataList, setDataList } = useCarStore()
 
-    useEffect(() => {
-        setDataList(CarData)
-    }, [dataList])
-
+    /*  useEffect(() => {
+         setDataList(CarData)
+     }, [dataList])
+  */
     return (
         <>
             <section className='w-full py-28'>
@@ -27,8 +23,7 @@ export default function FeatureSection() {
                         href="/buy-a-car"
                     />
 
-                    <div className='w-full grid grid-cols-1 lg:grid-cols-5 gap-4'>
-                        {/* Feature/Large item (Spans 2 rows and 2 columns) */}
+                    {/* <div className='w-full grid grid-cols-1 lg:grid-cols-5 gap-4'>
                         <div className='lg:col-span-2 col-span-1'>
                             {dataList.length > 0 && (
                                 <Card
@@ -57,7 +52,7 @@ export default function FeatureSection() {
                         }
 
                     </div>
-
+ */}
                 </div>
             </section >
         </>

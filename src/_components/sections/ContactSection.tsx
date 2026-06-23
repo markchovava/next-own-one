@@ -9,14 +9,27 @@ import ContactForm from "../forms/ContactForm"
 import IconDefault from "../icons/IconDefault"
 import { AppInfoData } from "@/_data/sample/AppinfoData"
 import CardIcon from "../cards/CardIcon"
+import { useAppInfoStore } from "@/_store/useAppInfoStore"
+import { useEffect } from "react"
 
 
 
 
-export default function ContactSection() {
-    const { data, errors, isSubmitting, setInputValue } = useContactStore()
+interface Props {
+    dbData: any
+}
 
-    const handleSubmit = async () => { }
+
+export default function ContactSection({ dbData }: Props) {
+    const { data, setData } = useAppInfoStore()
+
+    console.log('dbData', dbData)
+
+    useEffect(() => {
+        setData(dbData.data)
+    }, [setData, dbData.data])
+
+
 
     return (
         <>
@@ -31,12 +44,21 @@ export default function ContactSection() {
                                 business hours to explore our expert consulting solutions. Our team is
                                 dedicated to enhancing your operational efficiency.
                             </p>
-                            <CardIcon
-                                name={AppInfoData.phone}
-                                iconType='phone' />
-                            <CardIcon
-                                name={AppInfoData.address}
-                                iconType='address' />
+                            {data?.phone &&
+                                <CardIcon
+                                    name={data.phone}
+                                    iconType='phone' />
+                            }
+                            {data?.email &&
+                                <CardIcon
+                                    name={data.email}
+                                    iconType='email' />
+                            }
+                            {data?.address &&
+                                <CardIcon
+                                    name={AppInfoData.address}
+                                    iconType='address' />
+                            }
                         </div>
                     </div>
                 </div>

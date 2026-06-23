@@ -2,7 +2,7 @@
 
 
 
-interface PropInterface{
+interface PropInterface {
     type?: string,
     label?: string
     name: string,
@@ -13,34 +13,34 @@ interface PropInterface{
 }
 
 export default function TextInput({
-    type="text", 
-    label, 
-    name, 
-    value, 
-    placeholder, 
-    onChange, 
-    error=""
+    type = "text",
+    label,
+    name,
+    value,
+    placeholder,
+    onChange,
+    error = ""
 }: PropInterface) {
 
-  return (
-    <div className="mb-4">
-        {label &&
-        <p className="font-medium text-sm text-gray-700 mb-1">
-            {label}:
-        </p>
-        }
-        <input 
-        type={type}
-        name={name}
-        value={value}
-        placeholder={placeholder}
-        onChange={onChange}
-        className={`w-full px-3 py-2 rounded-lg outline-none border border-gray-300 
+    return (
+        <div className="mb-4">
+            {label &&
+                <p className="font-medium text-sm text-gray-700 mb-1">
+                    {label}:
+                </p>
+            }
+            <input
+                type={type}
+                name={name}
+                value={value}
+                placeholder={placeholder}
+                onChange={onChange}
+                className={`w-full px-3 py-2 rounded-lg outline-none border border-gray-300 
             focus:border-gray-500 ease-initial duration-200 transition-all`} />
-        {error &&
-            <p className="text-sm text-red-600 font-light">
-            {error}</p>
-        }
-    </div>
-  )
+            {error &&
+                <p className="text-xs text-red-600 font-light">
+                    {error}</p>
+            }
+        </div>
+    )
 }

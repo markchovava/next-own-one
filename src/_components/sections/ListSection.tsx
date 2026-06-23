@@ -2,7 +2,6 @@
 
 import TitleOne from "../titles/TitleOne"
 import CardOne from "../cards/CardOne"
-import { CarData } from "@/_data/sample/CarData"
 import { NoImageData } from "@/_data/sample/NoImage"
 import { useCarStore } from "@/_store/useCarStore"
 import { useEffect } from "react"
