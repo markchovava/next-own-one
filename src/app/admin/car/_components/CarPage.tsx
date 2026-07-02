@@ -42,6 +42,8 @@ export default function CarPage({ dbData }: Props) {
         getPaginatedDatalist,
     } = useCarStore()
 
+    console.log('CarPage dbData: ', dbData); // Debugging line to check dbData
+
     useEffect(() => {
         // Call setData even if dbData.data is null 
         // to ensure isLoading becomes false
