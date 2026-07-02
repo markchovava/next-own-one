@@ -32,7 +32,9 @@ export default function CarViewSection({ appData, dbData, id }: Props) {
     } = useAppInfoStore()
     const { setData, data, setCurrentImage, currentImage, images, properties } = useCarStore()
     const numId = Number(id)
-    //const data = i
+
+    console.log('carData', dbData)
+
     useEffect(() => {
         if (appData.data) {
             setAppDataDb(appData.data)

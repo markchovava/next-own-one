@@ -92,6 +92,7 @@ export default function CarEditModal({ brandData, id }: Props) {
         }
         setIsSubmitting(true);
 
+
         const formData = new FormData()
         formData.append('name', data.name)
         formData.append('price', data.price ? data.price.toString() : '0')
@@ -127,6 +128,7 @@ export default function CarEditModal({ brandData, id }: Props) {
             // Matches the updated backend array key
             formData.append('deletedImageIds[]', id);
         });
+
 
         console.log('data:: ', data)
         console.log('properties:: ', properties)

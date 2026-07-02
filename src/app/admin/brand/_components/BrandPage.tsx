@@ -188,7 +188,7 @@ function MainDataArea() {
                             </div>
                             <div className=''>
                                 <p className='font-light'>User</p>
-                                <p>{i.user.name ? valueWithFallback(i.user.name) : i.user.email}</p>
+                                <p>{i?.user?.name ? valueWithFallback(i?.user?.name) : i?.user?.email}</p>
                             </div>
                             <div className=''>
                                 <p className='font-light'>Priority</p>

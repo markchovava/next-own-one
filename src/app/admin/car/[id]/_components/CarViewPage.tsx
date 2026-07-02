@@ -23,6 +23,7 @@ interface Props {
 export default function CarViewPage({ dbData }: Props) {
     const { properties, imagesList, setData, setDbProperties, setDbImages, setToggleModal } = useCarStore()
 
+    console.log('CarViewPage dbData: ', dbData) // Debugging line to check dbData
 
     useEffect(() => {
         // Hydrate the store with backend data and toggle loading state off
