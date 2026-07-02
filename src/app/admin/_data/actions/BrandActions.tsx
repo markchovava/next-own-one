@@ -1,10 +1,7 @@
 "use server";
 
 import { baseURL } from "@/_api/baseURL";
-import { AuthServerCookieName } from "@/_cookie/CookieServer";
 import { revalidatePath } from "next/cache";
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 import { getAuthHeaders } from "./_helpers/getAuthHeaders";
 
 
@@ -147,6 +144,8 @@ export async function _brandDeleteAction(id: string | number) {
     }
   });
   revalidatePath('/admin/brand');
+  revalidatePath('/buy-a-car');
+  revalidatePath('/');
   return await res.json();
 }
 
@@ -161,19 +160,23 @@ export async function _brandStoreAction(data: FormData) {
     }
   });
   revalidatePath('/admin/brand');
+  revalidatePath('/buy-a-car');
+  revalidatePath('/');
   return await res.json();
 }
 
 export async function _brandUpdateAction(id: string | number, data: FormData) {
   const authHeader = await getAuthHeaders();
   const res = await fetch(`${baseURL}api/brand/${id}`, {
-    method: 'POST', // Make sure your backend API expects POST for updates (otherwise use PUT/PATCH)
+    method: 'POST',
     body: data,
     headers: {
       ...authHeader,
     }
   });
   revalidatePath(`/admin/brand/${id}`);
-  revalidatePath('/admin/brand'); // Revalidate container list to show updated name/details instantly
+  revalidatePath('/admin/brand');
+  revalidatePath('/buy-a-car');
+  revalidatePath('/');
   return await res.json();
 }

@@ -276,6 +276,8 @@ export async function _carStoreAction(data: FormData) {
         }
     });
     revalidatePath('/admin/car');
+    revalidatePath('/buy-a-car');
+    revalidatePath('/');
     return await res.json();
 }
 
@@ -290,5 +292,7 @@ export async function _carUpdateAction(id: string | number, data: FormData) {
     });
     revalidatePath(`/admin/car/${id}`);
     revalidatePath('/admin/car'); // Also clear the parent list so changes reflect
+    revalidatePath('/buy-a-car');
+    revalidatePath('/');
     return await res.json();
 }
